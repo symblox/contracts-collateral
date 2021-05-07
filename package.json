@@ -1,0 +1,59 @@
+{
+  "name": "contracts-collateral",
+  "version": "0.0.1",
+  "description": "contracts collateral",
+  "scripts": {
+    "node": "yarn hardhat node",
+    "compile": "yarn hardhat compile",
+    "test": "TS_NODE_TRANSPILE_ONLY=1 yarn hardhat test",
+    "deploy": "yarn hardhat run scripts/deploy.ts --network",
+    "upgrade": "yarn hardhat run scripts/upgrade.ts --network"
+  },
+  "author": "symblox@protonmail.com",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/symblox/contracts-collateral"
+  },
+  "dependencies": {
+    "@openzeppelin/test-helpers": "^0.5.6",
+    "@openzeppelin/upgrades": "^2.8.0",
+    "inquirer": "^8.0.0",
+    "openzeppelin-solidity": "^3.1.0",
+    "web3-utils": "^1.2.11"
+  },
+  "devDependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.0.1",
+    "@nomiclabs/hardhat-waffle": "^2.0.1",
+    "@openzeppelin/contracts": "^3.1.0",
+    "@openzeppelin/contracts-upgradeable": "^3.4.1",
+    "@openzeppelin/hardhat-upgrades": "^1.6.0",
+    "@symblox/hardhat-abi-gen": "^0.2.0",
+    "@symblox/hardhat-dotenv": "1.0.0",
+    "@types/chai": "^4.2.14",
+    "@types/luxon": "^1.25.0",
+    "@types/mocha": "^8.0.4",
+    "@typescript-eslint/eslint-plugin": "^4.17.0",
+    "@typescript-eslint/parser": "^4.17.0",
+    "chai": "^4.2.0",
+    "dotenv": "^8.2.0",
+    "eslint": "^7.22.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "ethereum-waffle": "^3.2.1",
+    "ethers": "^5.0.8",
+    "fs": "0.0.1-security",
+    "hardhat": "^2.0.5",
+    "hardhat-gas-reporter": "^1.0.4",
+    "luxon": "^1.25.0",
+    "mocha": "^8.2.1",
+    "prettier": "^2.2.1",
+    "sol-merger": "^3.1.0",
+    "solc": "^0.6.12",
+    "string-format": "^2.0.0",
+    "truffle": "^5.1.56",
+    "truffle-hdwallet-provider": "^1.0.17",
+    "ts-node": "^9.1.0",
+    "typescript": "^4.1.2"
+  }
+}
