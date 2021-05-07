@@ -1,0 +1,12 @@
+node_modules
+coverage
+coverage.json
+build
+flatterned
+.env
+.coveralls.yml
+artifacts
+cache
+data
+compiled-contracts
+flatten
