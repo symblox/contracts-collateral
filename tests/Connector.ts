@@ -105,4 +105,35 @@ describe("Connector", function () {
     erc20Balance = await erc20.balanceOf(deployer.address);
     expect(erc20Balance).to.equal(redeemAmount);
   });
+
+  it("emergency withdraw", async () => {
+    const ER20 = await ethers.getContractFactory("MockERC20");
+    const erc20Two = await ER20.deploy("DAI", "DAI");
+
+    //connector starting balance is 0
+    let balance = await erc20Two.balanceOf(connector.address);
+    expect(balance).to.equal(0);
+
+    const mintAmount = parseEther("1");
+    await erc20Two.mint(connector.address, mintAmount);
+
+    //mint 1 to strategyIdle
+    balance = await erc20Two.balanceOf(connector.address);
+    expect(balance).to.equal(mintAmount);
+
+    //only owner can call emergencyWithdraw
+    await expect(
+      connector.connect(alice).emergencyWithdraw(erc20Two.address)
+    ).to.revertedWith("caller is not the owner");
+
+    await connector.emergencyWithdraw(erc20Two.address);
+
+    //all balance has emergencyWithdraw to alice, so balance is 0
+    balance = await erc20Two.balanceOf(connector.address);
+    expect(balance).to.equal(0);
+
+    //alice balance is 1
+    balance = await erc20Two.balanceOf(deployer.address);
+    expect(balance).to.equal(mintAmount);
+  });
 });
