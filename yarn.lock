@@ -1857,11 +1857,6 @@
   resolved "https://registry.yarnpkg.com/@solidity-parser/parser/-/parser-0.8.2.tgz#a6a5e93ac8dca6884a99a532f133beba59b87b69"
   integrity sha512-8LySx3qrNXPgB5JiULfG10O3V7QTxI/TLzSw5hFQhXWSkVxZBAv4rZQ0sYgLEbc8g3L2lmnujj1hKul38Eu5NQ==
 
-"@symblox/hardhat-abi-gen@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@symblox/hardhat-abi-gen/-/hardhat-abi-gen-0.2.0.tgz#69ef506e548f834118b5996eddf2889c1fbe3d51"
-  integrity sha512-M1+/hxiaLLUSMCf9pPBhzZdWlS1NcxpbwdQjDTYu6taN1nRNBhtUi+sC4iHBwUU112ewXgmAVxYm3LG7PdADhQ==
-
 "@symblox/hardhat-dotenv@1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@symblox/hardhat-dotenv/-/hardhat-dotenv-1.0.0.tgz#59baa8f29c7cafacdf73972d433e542e7bd7d4af"
