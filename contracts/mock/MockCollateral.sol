@@ -24,7 +24,7 @@ contract MockCollateral {
         return userCollateral = amount;
     }
 
-    function getUserCollateral(address user, bytes32 currency) external returns(uint256) {
+    function getUserCollateral(address user, bytes32 currency) external view returns(uint256) {
         return userCollateral;
     }
 
@@ -32,7 +32,7 @@ contract MockCollateral {
         return userTotalCollateralInUsd = amount;
     }
 
-    function getUserTotalCollateralInUsd(address user) external returns(uint256) {
+    function getUserTotalCollateralInUsd(address user) external view returns(uint256) {
         return userTotalCollateralInUsd;
     }
 
@@ -40,7 +40,7 @@ contract MockCollateral {
         return userTotalCollateralInUsd = amount;
     }
 
-    function getUserMinCollateralRatio(address user) external returns(uint256) {
+    function getUserMinCollateralRatio(address user) external view returns(uint256) {
         return userMinCollateralRatio;
     }
 
@@ -48,7 +48,7 @@ contract MockCollateral {
         return hasMinCRatio = amount;
     }
 
-    function getHasMinCRatio(address user) external returns(uint256) {
+    function getHasMinCRatio(address user) external view returns(uint256) {
         return hasMinCRatio;
     }
 
@@ -56,7 +56,7 @@ contract MockCollateral {
         return maxRedeemableInUsd = amount;
     }
 
-    function getMaxRedeemableInUsd(address user) external returns(uint256) {
+    function getMaxRedeemableInUsd(address user) external view returns(uint256) {
         return maxRedeemableInUsd;
     }
 
@@ -64,7 +64,7 @@ contract MockCollateral {
         return maxRedeemable = amount;
     }
 
-    function getMaxRedeemable(address token, bytes32 currency) external returns(uint256) {
+    function getMaxRedeemable(address token, bytes32 currency) external view returns(uint256) {
         return maxRedeemable;
     }
 

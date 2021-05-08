@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 pragma solidity 0.6.12;
 pragma experimental ABIEncoderV2;
 
@@ -80,11 +81,11 @@ contract SingleSCToken is BaseToken {
         uint256 r = sharesToAmount(_shares);
         _burn(msg.sender, _shares);
 
-        uint256 b = balance();
+        uint256 b = getBalance();
         if (b < r) {
             // require(balanceStrategy() >= r.sub(b));
             StrategyBase(strategy).withdraw(r.sub(b));
-            r = balance();
+            r = getBalance();
         }
 
         require(r >= _minAmount, "did not meet minimum amount requested");
@@ -97,7 +98,7 @@ contract SingleSCToken is BaseToken {
         IERC20Upgradeable(token).safeApprove(strategy, uint256(-1));
     }
 
-    function balance() public view override returns (uint256) {
+    function getBalance() public view override returns (uint256) {
         return IERC20Upgradeable(token).balanceOf(address(this));
     }
 
@@ -173,7 +174,7 @@ contract SingleSCToken is BaseToken {
             require(address(this).balance >= _amount, "amount greater than holding");
             _wrapBNB(_amount);
         } else if (_token == token) {
-            require(balance() >= _amount, "amount greater than holding");
+            require(getBalance() >= _amount, "amount greater than holding");
         }
         IERC20Upgradeable(_token).safeTransfer(_to, _amount);
     }

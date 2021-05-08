@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 pragma solidity 0.6.12;
 pragma experimental ABIEncoderV2;
 
@@ -67,7 +68,7 @@ abstract contract BaseToken is ERC20Upgradeable, ReentrancyGuardUpgradeable {
     }
 
     // balance of tokens that this contract is holding
-    function balance() public view virtual returns (uint256);
+    function getBalance() public view virtual returns (uint256);
 
     // total balance of tokens of a strategy
     function balanceStrategy() public view virtual returns (uint256);

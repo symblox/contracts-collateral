@@ -6,7 +6,7 @@ contract MockPrice {
 
     mapping(bytes32 => uint256) public prices;
 
-    function getPrice(bytes32 currency) external returns(uint256) {
+    function getPrice(bytes32 currency) external view returns(uint256) {
         return prices[currency];
     }
 
