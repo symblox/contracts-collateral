@@ -34,6 +34,11 @@ contract SingleSCToken is BaseToken {
         approveToken();
     }
 
+    function setPriceGetter(address _priceGetter) external {
+        require(msg.sender == govAddress, "!gov");
+        priceGetter = IPrices(_priceGetter);
+    }
+
     function depositBNB(uint256 _minShares) external payable override {
         require(!depositPaused, "deposit paused");
         require(isWbnb, "not bnb");
@@ -121,11 +126,15 @@ contract SingleSCToken is BaseToken {
 
     //return scToken price in usd
     function getPrice() public view override returns (uint256) {
-        return
-            multiplyDecimal(
-                getPricePerFullShare(),
-                priceGetter.getPrice(stringToBytes32(ERC20Upgradeable(token).symbol()))
-            );
+        if (isWbnb) {
+            return multiplyDecimal(getPricePerFullShare(), priceGetter.getPrice(stringToBytes32("BNB")));
+        } else {
+            return
+                multiplyDecimal(
+                    getPricePerFullShare(),
+                    priceGetter.getPrice(stringToBytes32(ERC20Upgradeable(token).symbol()))
+                );
+        }
     }
 
     function sharesToAmount(uint256 _shares) public view override returns (uint256) {
