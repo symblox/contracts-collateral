@@ -14,7 +14,7 @@ contract StrategyIdle is StrategyBase {
         __Pausable_init();
     }
 
-    function deposit(uint256 _wantAmt) public override nonReentrant whenNotPaused returns (uint256) {
+    function deposit(uint256 _wantAmt) public payable override nonReentrant whenNotPaused returns (uint256) {
         IERC20Upgradeable(wantAddress).safeTransferFrom(address(msg.sender), address(this), _wantAmt);
         return _wantAmt;
     }
@@ -23,6 +23,10 @@ contract StrategyIdle is StrategyBase {
         IERC20Upgradeable(wantAddress).safeTransfer(owner(), _wantAmt);
         return _wantAmt;
     }
+
+    function earn(uint256 amount) external override onlyOwner nonReentrant whenNotPaused returns(uint256) {}
+
+    function calcIncome() public override returns (uint256) {}
 
     function pause() public {
         require(msg.sender == govAddress, "Not authorized");
@@ -53,11 +57,6 @@ contract StrategyIdle is StrategyBase {
     function setGov(address _govAddress) public override {
         require(msg.sender == govAddress, "Not authorized");
         govAddress = _govAddress;
-    }
-
-    function setBuyBackAddress(address _buyBackAddress) external override {
-        require(msg.sender == govAddress, "Not authorized");
-        revert();
     }
 
     function emergencyWithdraw(

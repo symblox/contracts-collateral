@@ -102,10 +102,14 @@ contract Connector {
         return icollateral.collateral(stringToBytes32(scToken.symbol()), scToken.balanceOf(address(this)));
     }
 
+    function earn(BaseToken scToken) external {
+        scToken.earn(owner);
+    }
+
     function _depositToSCToken(BaseToken scToken, uint256 stakeAmount) private {
         if (stakeAmount > 0) {
             address scTokenAddress = address(scToken);
-            if (scToken.isWbnb()) {
+            if (scToken.isBNB()) {
                 require(msg.value >= stakeAmount, "amount not enough");
                 scToken.depositBNB{value: msg.value}(0);
             } else {
@@ -170,7 +174,7 @@ contract Connector {
 
     function _withdrawFromSCToken(BaseToken scToken) private {
         if (scToken.balanceOf(address(this)) > 0) {
-            if (scToken.isWbnb()) {
+            if (scToken.isBNB()) {
                 scToken.withdrawBNB(scToken.balanceOf(address(this)), 0);
                 msg.sender.transfer(address(this).balance);
             } else {

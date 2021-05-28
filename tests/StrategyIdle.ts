@@ -35,7 +35,7 @@ describe("StrategyIdle", function () {
     expect(govAddress).to.equal(alice.address);
 
     //StrategyIdle no need to set BuyBackAddress, so revert to avoid wasting gas
-    await expect(strategyIdle.setBuyBackAddress(alice.address)).to.reverted;
+    await expect(strategyIdle.setRewardEscrow(alice.address)).to.reverted;
   });
 
   it("deposit and withdraw", async () => {

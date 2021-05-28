@@ -3,7 +3,7 @@ pragma solidity 0.6.12;
 
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-interface IVenusDistribution {
+interface IVenusComptroller {
     function claimVenus(address holder) external;
 
     function enterMarkets(address[] memory _vtokens) external;

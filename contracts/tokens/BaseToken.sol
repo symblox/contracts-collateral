@@ -24,9 +24,7 @@ abstract contract BaseToken is ERC20Upgradeable, ReentrancyGuardUpgradeable {
 
     bool public constant isSCToken = true;
 
-    bool public isWbnb;
-
-    address public wbnbAddress;
+    bool public isBNB;
 
     bool public depositPaused;
 
@@ -91,4 +89,6 @@ abstract contract BaseToken is ERC20Upgradeable, ReentrancyGuardUpgradeable {
         require(msg.sender == govAddress, "Not authorized");
         govAddress = _govAddress;
     }
+
+    function earn(address user) external virtual returns (uint256);
 }
