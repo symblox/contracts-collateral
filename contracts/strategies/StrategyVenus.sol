@@ -35,6 +35,16 @@ contract StrategyVenus is StrategyBase {
         FEE_DENOMINATOR = 10000;
     }
 
+    function setPath(address[] memory _xvsToWantPaths) external {
+        require(msg.sender == govAddress, "Not authorized");
+        xvsToWantPaths = _xvsToWantPaths;
+    }
+
+    function setGov(address _govAddress) public override {
+        require(msg.sender == govAddress, "Not authorized");
+        govAddress = _govAddress;
+    }
+
     function deposit(uint256 _wantAmt) public payable override nonReentrant whenNotPaused returns (uint256) {
         updateBalance();
         uint256 prevBalance = wantLockedTotal();
@@ -222,11 +232,6 @@ contract StrategyVenus is StrategyBase {
         } else {
             return IERC20Upgradeable(wantAddress).balanceOf(address(this));
         }
-    }
-
-    function setGov(address _govAddress) public override {
-        require(msg.sender == govAddress, "Not authorized");
-        govAddress = _govAddress;
     }
 
     function emergencyWithdraw(
