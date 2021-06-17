@@ -207,7 +207,7 @@ contract SingleSCToken is BaseToken {
 
     function getBalance() public view override returns (uint256) {
         if(isBNB){
-            return address(this).balance;
+            return address(this).balance.sub(msg.value);
         }else{
             return IERC20Upgradeable(token).balanceOf(address(this));
         }
