@@ -44,7 +44,7 @@
     "fs": "0.0.1-security",
     "hardhat": "^2.0.5",
     "hardhat-gas-reporter": "^1.0.4",
-    "luxon": "^1.25.0",
+    "luxon": "^1.28.1",
     "mocha": "^8.2.1",
     "prettier": "^2.2.1",
     "sol-merger": "^3.1.0",
